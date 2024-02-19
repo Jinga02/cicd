@@ -26,11 +26,11 @@ jobs:
           key: npm-packages-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true' # 이전 단계에서 캐시가 히트되지 않았을 때만 실행
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Run lint
-        if: ${{ always() }} # 항상 실행하도록 설정
+        if: ${{ always() }}
         run: npm run lint
 
       - name: Run tsc
